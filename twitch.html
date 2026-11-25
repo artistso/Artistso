@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en" data-theme="pink">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Twitch — artistso.com · Steven Owens</title>
+    <meta name="description" content="artistso.com: I'm Steven Owens — artist, animator, educator, developer. My apps, my theoretical physics and mathematics, a wave language, my long-form writing on Substack, and open commissions." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      /* ---------- themes ---------- */
+      :root {
+        --bg: #fff5f8;
+        --bg-raise: #fffbfd;
+        --ink: #241118;
+        --ink-soft: #6d4a58;
+        --accent: #d81b60;
+        --accent2: #0f766e;
+        --accent3: #d97706;
+        color-scheme: light;
+      }
+      :root[data-theme="blue"]   { --bg:#f3f7ff; --accent:#1d4ed8; --accent2:#0e7490; --accent3:#d97706; }
+      :root[data-theme="green"]  { --bg:#f2faf3; --accent:#15803d; --accent2:#0f766e; --accent3:#b45309; }
+      :root[data-theme="yellow"] { --bg:#fffbeb; --accent:#a16207; --accent2:#b45309; --accent3:#db2777; }
+      :root[data-theme="purple"] { --bg:#f7f4ff; --accent:#7c3aed; --accent2:#db2777; --accent3:#0891b2; }
+      :root[data-theme="orange"] { --bg:#fff7ed; --accent:#ea580c; --accent2:#b91c1c; --accent3:#a16207; }
+      :root[data-theme="red"]    { --bg:#fff5f5; --accent:#dc2626; --accent2:#9d174d; --accent3:#b45309; }
+      :root {
+        --line: #e8ccd6;
+        --chip: #fdeef3;
+      }
+      :root[data-theme="blue"]   { --line:#c9d9f6; --chip:#e8effd; }
+      :root[data-theme="green"]  { --line:#c6e7cc; --chip:#e7f6ea; }
+      :root[data-theme="yellow"] { --line:#eee0ab; --chip:#fdf3d3; }
+      :root[data-theme="purple"] { --line:#ddd0f8; --chip:#f0eafd; }
+      :root[data-theme="orange"] { --line:#f6d2ac; --chip:#fdeeda; }
+      :root[data-theme="red"]    { --line:#f3c4c4; --chip:#fdeaea; }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #170d12;
+          --bg-raise: #22141b;
+          --ink: #fbeef3;
+          --ink-soft: #c9a3b1;
+          --line: #422634;
+          --chip: #2c1822;
+          --accent: #f06292;
+          --accent2: #2dd4bf;
+          --accent3: #fbbf24;
+          color-scheme: dark;
+        }
+        :root[data-theme="blue"]   { --bg:#0c1220; --bg-raise:#141d31; --line:#263757; --chip:#1a2742; --accent:#60a5fa; --accent2:#22d3ee; --accent3:#fbbf24; }
+        :root[data-theme="green"]  { --bg:#0b1610; --bg-raise:#132219; --line:#24452e; --chip:#1a2f20; --accent:#4ade80; --accent2:#2dd4bf; --accent3:#fbbf24; }
+        :root[data-theme="yellow"] { --bg:#171106; --bg-raise:#241a0a; --line:#4a3a14; --chip:#2f2408; --accent:#facc15; --accent2:#fbbf24; --accent3:#f472b6; }
+        :root[data-theme="purple"] { --bg:#130d20; --bg-raise:#1e1533; --line:#372a55; --chip:#291d47; --accent:#a78bfa; --accent2:#f472b6; --accent3:#22d3ee; }
+        :root[data-theme="orange"] { --bg:#1a0f06; --bg-raise:#281708; --line:#4f2d12; --chip:#331e0a; --accent:#fb923c; --accent2:#f87171; --accent3:#facc15; }
+        :root[data-theme="red"]    { --bg:#1a0b0b; --bg-raise:#281111; --line:#4f2222; --chip:#331515; --accent:#f87171; --accent2:#f472b6; --accent3:#fbbf24; }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Spectral", Georgia, serif;
+        font-size: 18px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+        transition: background .45s ease, color .45s ease;
+      }
+      a { color: var(--accent); }
+      .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+      /* ---------- animated opening ---------- */
+      #intro {
+        position: fixed; inset: 0; z-index: 60;
+        background: var(--bg);
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+        transition: transform .7s cubic-bezier(.7,0,.2,1), opacity .7s ease;
+      }
+      #intro.done { transform: translateY(-100%); opacity: .4; pointer-events: none; }
+      #intro .intro-word {
+        display: flex; flex-wrap: nowrap;
+        font-size: clamp(34px, 9.5vw, 92px); font-weight: 800; letter-spacing: -0.02em; line-height: 1;
+      }
+      #intro .intro-word span { display: inline-block; opacity: 0; animation: introRise .65s cubic-bezier(.2,1.4,.4,1) forwards; }
+      #intro .intro-word span:nth-child(3n+1) { color: var(--accent); }
+      #intro .intro-word span:nth-child(3n+2) { color: var(--accent2); }
+      #intro .intro-word span:nth-child(3n)   { color: var(--accent3); }
+      #intro .intro-word span.dot { color: var(--accent); }
+      #intro .intro-sub {
+        font-family: "IBM Plex Mono", monospace; font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+        color: var(--ink-soft); opacity: 0; animation: introFade .6s ease .8s forwards; text-align: center; padding: 0 16px;
+      }
+      #intro .intro-bar { width: min(320px, 60vw); height: 3px; background: var(--line); overflow: hidden; }
+      #intro .intro-bar i { display: block; height: 100%; width: 0; background: var(--accent); animation: introBar 1.25s ease .1s forwards; }
+      @keyframes introRise { from { opacity: 0; transform: translateY(46px) rotate(-5deg) scale(.75); } to { opacity: 1; transform: none; } }
+      @keyframes introFade { to { opacity: 1; } }
+      @keyframes introBar { to { width: 100%; } }
+
+      /* ---------- hero ---------- */
+      .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+      #field { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+      .hero-inner { position: relative; max-width: 1060px; margin: 0 auto; padding: 72px 24px 56px; pointer-events: none; }
+      .hero-inner a, .hero-inner button { pointer-events: auto; }
+      .flavors { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 26px; }
+      .flavor {
+        font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+        padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px;
+        background: var(--bg-raise); color: var(--ink-soft);
+      }
+      .flavor b { font-weight: 500; }
+      .flavor .u { color: var(--accent); }
+      .flavor .d { color: var(--accent2); }
+      .flavor .s { color: var(--accent3); }
+
+      .wordmark {
+        display: flex; flex-wrap: nowrap; align-items: baseline;
+        margin: 0 0 10px; line-height: .95;
+        font-size: clamp(37px, 10.2vw, 104px); font-weight: 800; letter-spacing: -0.02em;
+      }
+      .wl {
+        font: inherit; color: var(--ink); background: none; border: 0; padding: 0 .005em; margin: 0;
+        cursor: pointer; display: inline-block; -webkit-tap-highlight-color: transparent;
+        opacity: 0; animation: introRise .6s cubic-bezier(.2,1.4,.4,1) forwards;
+        transition: color .2s ease, transform .2s ease;
+      }
+      .wl:hover, .wl:focus-visible { color: var(--accent); transform: translateY(-6px) rotate(-3deg); outline: none; }
+      .wl.dot { color: var(--accent); }
+      .wl.lit { color: var(--accent); }
+      .wl.pop { animation: letterPop .45s cubic-bezier(.2,1.6,.4,1); }
+      @keyframes letterPop { 0% { transform: scale(1); } 35% { transform: scale(1.45) rotate(7deg); } 100% { transform: scale(1); } }
+
+      .hero-sub { font-size: clamp(20px, 3.4vw, 27px); font-weight: 300; max-width: 640px; margin: 14px 0 0; color: var(--ink); }
+      .hero-sub em { color: var(--accent2); }
+      .hero-meta {
+        margin-top: 30px; font-family: "IBM Plex Mono", monospace; font-size: 13.5px; color: var(--ink-soft);
+        display: flex; gap: 22px; flex-wrap: wrap;
+      }
+      .hero-meta a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 3px; }
+      .hint { margin-top: 12px; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--ink-soft); opacity: .85; max-width: 640px; }
+      .egg-count { margin-top: 6px; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--accent); }
+      .egg-log { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+      .egg-log span {
+        font-family: "IBM Plex Mono", monospace; font-size: 11px; padding: 3px 8px;
+        border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); background: var(--bg-raise);
+        animation: introFade .4s ease both;
+      }
+
+      /* theme picker */
+      .themes { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 26px; pointer-events: auto; }
+      .themes .tlabel { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin-right: 2px; }
+      .tswatch {
+        font-family: "IBM Plex Mono", monospace; font-size: 12px; cursor: pointer;
+        display: inline-flex; align-items: center; gap: 7px;
+        padding: 5px 11px 5px 7px; border: 1px solid var(--line); border-radius: 999px;
+        background: var(--bg-raise); color: var(--ink);
+      }
+      .tswatch i { width: 14px; height: 14px; border-radius: 50%; display: block; }
+      .tswatch[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); color: var(--accent); font-weight: 500; }
+
+      /* ---------- page nav ---------- */
+      .pagenav {
+        position: sticky; top: 0; z-index: 40;
+        background: var(--bg-raise); border-bottom: 1px solid var(--line);
+      }
+      .pagenav-inner { max-width: 1060px; margin: 0 auto; padding: 10px 24px; display: flex; gap: 8px; flex-wrap: wrap; }
+      .pnav {
+        font-family: "IBM Plex Mono", monospace; font-size: 13px; cursor: pointer;
+        padding: 8px 14px; border-radius: 999px; border: 1px solid transparent;
+        background: transparent; color: var(--ink-soft);
+      }
+      .pnav:hover { color: var(--accent); }
+      .pnav[aria-current="page"] { background: var(--accent); color: #fff; font-weight: 500; }
+
+      /* ---------- layout ---------- */
+      main { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+      .page { display: none; }
+      .page.active { display: block; animation: pageIn .45s ease both; }
+      @keyframes pageIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+      section { padding: 56px 0 8px; }
+      .sec-head { display: flex; align-items: baseline; gap: 16px; border-bottom: 2px solid var(--ink); padding-bottom: 10px; margin-bottom: 30px; }
+      .sec-head h2 { font-size: clamp(28px, 4.5vw, 38px); font-weight: 800; margin: 0; letter-spacing: -0.01em; }
+      .sec-head .tag { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--ink-soft); margin-left: auto; text-align: right; }
+      .lede { font-size: 20px; font-weight: 300; max-width: 720px; margin: 0 0 28px; }
+
+      /* breadcrumb trail */
+      .trail-intro { font-size: 20px; font-weight: 300; max-width: 720px; margin: 0 0 18px; }
+      .names-line { font-size: 17px; color: var(--ink-soft); margin: 0 0 14px; max-width: 720px; }
+      .names-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 36px; }
+      .names-chips span { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-raise); color: var(--ink-soft); }
+      .trail { list-style: none; margin: 0; padding: 0; position: relative; }
+      .trail::before { content: ""; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
+      .trail li { position: relative; padding: 0 0 22px 36px; }
+      .trail li:last-child { padding-bottom: 4px; }
+      .trail li::before { content: ""; position: absolute; left: 0; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+      .trail li:nth-child(3n+2)::before { border-color: var(--accent2); }
+      .trail li:nth-child(3n)::before { border-color: var(--accent3); }
+      .trail .when { font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 500; letter-spacing: .04em; color: var(--ink); display: block; margin-bottom: 2px; }
+      .trail p { margin: 0; color: var(--ink-soft); font-size: 16.5px; max-width: 640px; }
+
+      /* project list — editorial rows, not cards */
+      .proj { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+      @media (min-width: 760px) { .proj { grid-template-columns: 300px 1fr auto; gap: 28px; align-items: start; } }
+      .proj h3 { font-size: 22px; font-weight: 600; margin: 0; line-height: 1.25; }
+      .proj h3 a { color: var(--ink); text-decoration: none; }
+      .proj h3 a:hover { color: var(--accent); }
+      .proj p { margin: 0; color: var(--ink-soft); font-size: 16.5px; max-width: 560px; }
+      .proj .status { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap; padding: 4px 9px; border-radius: 3px; background: var(--chip); color: var(--ink-soft); justify-self: start; }
+      .status.live { color: var(--accent2); }
+      .status.spec { color: var(--accent3); }
+      .goto-link { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--accent); background: none; border: 0; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
+
+      /* two-column notes */
+      .cols { display: grid; grid-template-columns: 1fr; gap: 36px; }
+      @media (min-width: 760px) { .cols { grid-template-columns: 1fr 1fr; } }
+      .cols h3 { font-size: 21px; margin: 0 0 10px; font-weight: 600; }
+      .cols p { margin: 0 0 14px; color: var(--ink-soft); font-size: 16.5px; }
+      .cols p strong { color: var(--ink); font-weight: 600; }
+
+      /* about */
+      .about-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+      @media (min-width: 760px) { .about-grid { grid-template-columns: 1.5fr 1fr; align-items: start; } }
+      .about-grid p { margin: 0 0 14px; color: var(--ink-soft); font-size: 17.5px; }
+      .about-grid p strong { color: var(--ink); font-weight: 600; }
+      .facts { border: 1px solid var(--line); background: var(--bg-raise); padding: 22px 24px; }
+      .facts dl { margin: 0; display: grid; gap: 14px; }
+      .facts dt { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-soft); }
+      .facts dd { margin: 2px 0 0; font-size: 16.5px; }
+      .facts dd .open { color: var(--accent2); font-weight: 600; }
+      .apk-note { display: block; margin-top: 8px; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--ink-soft); }
+      .apk-note b { color: var(--accent3); font-weight: 500; }
+
+      /* commissions CTA */
+      .cta { border: 2px solid var(--ink); background: var(--bg-raise); padding: 30px 28px; display: grid; gap: 20px; grid-template-columns: 1fr; }
+      @media (min-width: 760px) { .cta { grid-template-columns: 1.4fr 1fr; align-items: center; } }
+      .cta h3 { font-size: 26px; font-weight: 800; margin: 0 0 10px; letter-spacing: -0.01em; }
+      .cta p { margin: 0 0 10px; color: var(--ink-soft); font-size: 16.5px; }
+      .cta ul { margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: 16.5px; }
+      .cta-actions { display: grid; gap: 12px; justify-items: start; }
+      @media (min-width: 760px) { .cta-actions { justify-items: end; } }
+      .btn { display: inline-block; font-family: "IBM Plex Mono", monospace; font-size: 14px; background: var(--ink); color: var(--bg); padding: 13px 22px; text-decoration: none; border-radius: 3px; }
+      .btn:hover { background: var(--accent); color: #fff; }
+      .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+      .btn.ghost:hover { color: var(--accent); border-color: var(--accent); }
+
+      /* substack */
+      .substack { border: 1px solid var(--line); background: var(--bg-raise); padding: 26px 28px; margin: 36px 0 8px; }
+      .substack h3 { font-size: 21px; margin: 0 0 8px; font-weight: 600; }
+      .substack p { margin: 0 0 16px; color: var(--ink-soft); font-size: 16.5px; }
+      .substack iframe { width: 100%; height: 320px; border: 1px solid var(--line); background: #fff; display: block; }
+      .post-list { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 8px; }
+      .post-list li { display: flex; gap: 14px; flex-wrap: wrap; align-items: baseline; border-top: 1px solid var(--line); padding-top: 8px; }
+      .post-list .k { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-soft); }
+      .post-list a { font-weight: 600; color: var(--ink); text-decoration: none; }
+      .post-list a:hover { color: var(--accent); }
+
+      /* link hub */
+      .linkrow { display: flex; gap: 6px 18px; flex-wrap: wrap; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); }
+      .linkrow a { font-size: 20px; font-weight: 600; color: var(--ink); text-decoration: none; }
+      .linkrow a:hover { color: var(--accent); }
+      .linkrow .handle { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--accent); }
+      .linkrow .what { color: var(--ink-soft); font-size: 15.5px; margin-left: auto; text-align: right; }
+
+      /* neighborhood directory + platform pages (GeoCities / MySpace layer) */
+      .hood { display: grid; grid-template-columns: 1fr; gap: 0; border: 2px solid var(--ink); background: var(--bg-raise); }
+      @media (min-width: 760px) { .hood { grid-template-columns: 1fr 1fr 1fr; } }
+      .lot { padding: 16px 18px; border-bottom: 1px dashed var(--line); }
+      @media (min-width: 760px) { .lot { border-right: 1px dashed var(--line); } }
+      .lot .lot-no { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 4px; }
+      .lot a { font-size: 19px; font-weight: 600; color: var(--ink); text-decoration: none; }
+      .lot a:hover { color: var(--accent); }
+      .lot p { margin: 4px 0 0; font-size: 14.5px; color: var(--ink-soft); }
+      .ticker-wrap { overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 28px; }
+      .ticker { display: inline-block; white-space: nowrap; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; letter-spacing: .06em; color: var(--ink-soft); padding: 8px 0; animation: tickmove 36s linear infinite; }
+      @keyframes tickmove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+      .embed-slot { border: 2px dashed var(--accent); background: var(--chip); padding: 26px 24px; margin: 8px 0 28px; text-align: center; }
+      .embed-slot .es-k { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px; }
+      .embed-slot p { margin: 0 auto; max-width: 520px; color: var(--ink-soft); font-size: 15.5px; }
+      .stars { text-align: center; font-size: 18px; letter-spacing: .5em; color: var(--accent3); margin: 6px 0 26px; }
+      .status.pending { color: var(--accent); }
+      .plat-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+      @media (min-width: 760px) { .plat-grid { grid-template-columns: 1fr 1fr; } }
+      .plat-grid h3 { font-size: 20px; margin: 0 0 8px; font-weight: 600; }
+      .plat-grid p { margin: 0 0 12px; color: var(--ink-soft); font-size: 16px; }
+
+      /* artwork — masonry grid + lightbox (placeholder diagrams, site style) */
+      .f-a { fill: var(--accent); } .f-b { fill: var(--accent2); } .f-c { fill: var(--accent3); }
+      .f-ink { fill: var(--ink); } .f-chip { fill: var(--chip); } .f-raise { fill: var(--bg-raise); } .f-bg { fill: var(--bg); } .f-line { fill: var(--line); } .f-soft { fill: var(--ink-soft); }
+      .s-a { stroke: var(--accent); } .s-b { stroke: var(--accent2); } .s-c { stroke: var(--accent3); }
+      .s-ink { stroke: var(--ink); } .s-soft { stroke: var(--ink-soft); } .s-line { stroke: var(--line); }
+      .svg-t { font-family: "IBM Plex Mono", monospace; fill: var(--ink); }
+      .svg-ts { font-family: "IBM Plex Mono", monospace; fill: var(--ink-soft); }
+      .art-note { border: 1px solid var(--line); border-left: 3px solid var(--accent); background: var(--bg-raise); padding: 16px 20px; margin: 0 0 22px; }
+      .art-note .an-k { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 6px; }
+      .art-note p { margin: 0; color: var(--ink-soft); font-size: 15.5px; max-width: 680px; }
+      .art-note p strong { color: var(--ink); }
+      .art-filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 0 0 8px; }
+      .art-filters .af-label { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin-right: 2px; }
+      .art-filter { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; cursor: pointer; padding: 6px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-raise); color: var(--ink); }
+      .art-filter:hover { color: var(--accent); border-color: var(--accent); }
+      .art-filter[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 500; }
+      .art-count { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--ink-soft); margin: 0 0 18px; }
+      .art-masonry { columns: 1; column-gap: 20px; margin: 0 0 34px; }
+      @media (min-width: 560px) { .art-masonry { columns: 2; } }
+      @media (min-width: 900px) { .art-masonry { columns: 3; } }
+      .art-tile { display: block; width: 100%; break-inside: avoid; margin: 0 0 20px; padding: 0; text-align: left; font: inherit; cursor: pointer; background: var(--bg-raise); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; color: var(--ink); -webkit-tap-highlight-color: transparent; }
+      .art-tile:hover, .art-tile:focus-visible { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); outline: none; }
+      .art-tile[hidden] { display: none; }
+      .art-media { display: block; position: relative; background: var(--chip); }
+      .art-media svg { display: block; width: 100%; height: auto; }
+      .art-badge { position: absolute; top: 10px; left: 10px; font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; background: var(--bg-raise); border: 1px solid var(--accent); color: var(--accent); }
+      .art-badge::before { content: "▶ "; font-size: 9px; }
+      .art-cardfoot { display: block; padding: 13px 16px 15px; }
+      .art-cat { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--accent2); display: block; margin-bottom: 3px; }
+      .art-title { display: block; font-size: 18px; font-weight: 600; line-height: 1.3; }
+      .art-medium { display: block; font-size: 14px; color: var(--ink-soft); margin-top: 3px; line-height: 1.45; }
+      .art-view { display: block; font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--accent); margin-top: 8px; }
+      /* grid animation: paused by default — IntersectionObserver adds .is-playing in view */
+      .art-anim-playhead, .art-anim-ring, .art-anim-dash, .art-anim-spin { animation-play-state: paused; }
+      .is-playing .art-anim-playhead { animation: artPlayhead 3.6s ease-in-out infinite; animation-play-state: running; }
+      .is-playing .art-anim-ring { animation: artRingPulse 3.2s ease-in-out infinite; animation-play-state: running; transform-origin: center; transform-box: fill-box; }
+      .is-playing .art-anim-ring.d2 { animation-delay: .7s; } .is-playing .art-anim-ring.d3 { animation-delay: 1.4s; }
+      .is-playing .art-anim-dash { animation: artDash 4.5s linear infinite; animation-play-state: running; }
+      .is-playing .art-anim-spin { animation: artSpin 14s linear infinite; animation-play-state: running; transform-origin: center; transform-box: fill-box; }
+      @keyframes artPlayhead { 0% { transform: translateX(0); } 50% { transform: translateX(168px); } 100% { transform: translateX(0); } }
+      @keyframes artRingPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: .55; } }
+      @keyframes artDash { to { stroke-dashoffset: -56; } }
+      @keyframes artSpin { to { transform: rotate(360deg); } }
+      /* lightbox */
+      #artLightboxWrap { position: fixed; inset: 0; z-index: 57; background: rgba(10,4,8,.78); display: none; align-items: center; justify-content: center; padding: 18px; }
+      #artLightboxWrap.open { display: flex; }
+      #artLightbox { background: var(--bg-raise); border: 2px solid var(--accent); border-radius: 12px; max-width: 760px; width: 100%; max-height: calc(100vh - 36px); overflow-y: auto; padding: 22px; position: relative; animation: pageIn .3s ease both; }
+      #artLightbox .lb-k { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+      #artLightbox h4 { margin: 6px 44px 4px 0; font-size: 25px; font-weight: 800; line-height: 1.25; }
+      .lb-medium { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--accent2); margin: 0 0 12px; }
+      .lb-stage { background: var(--chip); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+      .lb-stage svg { display: block; width: 100%; height: auto; max-height: 52vh; }
+      .lb-desc { margin: 14px 0 4px; color: var(--ink-soft); font-size: 16px; line-height: 1.6; }
+      .lb-note { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--ink-soft); margin: 8px 0 0; }
+      .lb-foot { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+      .lb-btn { font-family: "IBM Plex Mono", monospace; font-size: 13px; cursor: pointer; padding: 9px 16px; border: 1px solid var(--ink); background: var(--bg); color: var(--ink); border-radius: 3px; }
+      .lb-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+      .lb-ind { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--ink-soft); margin-left: auto; }
+      #artLightbox .lb-close { position: absolute; top: 10px; right: 14px; background: none; border: 0; font-size: 24px; cursor: pointer; color: var(--ink-soft); line-height: 1; padding: 4px; }
+      #artLightbox .lb-close:hover { color: var(--accent); }
+
+      /* letter, wiki, forum, shop */
+      .letter-paper { border: 1px solid var(--line); background: var(--bg-raise); padding: 30px 28px; }
+      .letter-paper .subj { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--ink-soft); border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 20px; }
+      .letter-paper p { margin: 0 0 14px; color: var(--ink-soft); font-size: 17px; max-width: 680px; }
+      .letter-paper p strong, .letter-paper li strong { color: var(--ink); }
+      .letter-paper ul, .letter-paper ol { margin: 0 0 14px; padding-left: 22px; color: var(--ink-soft); font-size: 16.5px; }
+      .review-log { border-top: 2px solid var(--ink); margin-top: 8px; padding-top: 18px; }
+      .review-log li { margin-bottom: 12px; color: var(--ink-soft); font-size: 16px; }
+      .review-log .when { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--accent); display: block; }
+      .topic { border: 1px solid var(--line); background: var(--bg-raise); padding: 20px 22px; margin-bottom: 16px; }
+      .topic h3 { margin: 0 0 6px; font-size: 20px; }
+      .topic p { margin: 0 0 14px; color: var(--ink-soft); font-size: 16px; }
+      .vote-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+      .vote-btn { font-family: "IBM Plex Mono", monospace; font-size: 13px; cursor: pointer; padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: var(--ink); }
+      .vote-btn[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+      .vote-score { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--ink-soft); }
+      .cmt-box { width: 100%; margin-top: 14px; font: inherit; font-size: 15.5px; padding: 10px 12px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 4px; resize: vertical; }
+      .cmt-meta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+      .cmt-count { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--ink-soft); }
+      .cmt-list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 8px; }
+      .cmt-list li { border-top: 1px solid var(--line); padding-top: 8px; font-size: 15px; color: var(--ink-soft); }
+
+      .cats { border: 1px solid var(--line); background: var(--bg-raise); padding: 26px 28px; margin-top: 8px; }
+      .cats h3 { margin-top: 0; font-size: 21px; }
+      .cat-names { font-family: "IBM Plex Mono", monospace; font-size: 13px; display: flex; gap: 20px; flex-wrap: wrap; margin-top: 14px; }
+      .cat-names span b { font-weight: 500; }
+      .sun { color: var(--accent3); }
+      .aki { color: var(--accent2); }
+
+      /* SoCreate feature matrix */
+      .matrix-stats { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 22px; }
+      .matrix-stats span { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; padding: 5px 11px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-raise); color: var(--ink-soft); }
+      .matrix-stats span b { color: var(--ink); font-weight: 500; }
+      .matrix-cats { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 8px; }
+      .matrix-note { border: 1px solid var(--line); border-left: 3px solid var(--accent3); background: var(--bg-raise); padding: 20px 22px; margin: 0 0 34px; }
+      .matrix-note h3 { margin: 0 0 8px; font-size: 19px; }
+      .matrix-note p { margin: 0 0 10px; color: var(--ink-soft); font-size: 16px; }
+      .matrix-note p:last-child { margin-bottom: 0; }
+      .matrix-note p strong { color: var(--ink); }
+      .matrix-cat { margin: 0 0 36px; }
+      .matrix-cat-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 0; }
+      .matrix-cat-head h3 { font-size: 23px; font-weight: 800; margin: 0; letter-spacing: -0.01em; }
+      .matrix-cat-head .mc-count { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--ink-soft); margin-left: auto; }
+      .matrix-table { width: 100%; border-collapse: collapse; font-size: 16px; }
+      .matrix-table th { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-soft); text-align: left; font-weight: 500; padding: 10px 12px 8px 0; border-bottom: 1px solid var(--line); }
+      .matrix-table td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
+      .matrix-table td.f { color: var(--ink); font-weight: 600; min-width: 220px; }
+      .matrix-table td.src { font-size: 14.5px; white-space: nowrap; }
+      .badge { display: inline-block; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .05em; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+      .badge.listed { background: var(--chip); color: var(--accent2); border: 1px solid var(--line); }
+      .badge.new { background: var(--accent); color: #fff; }
+      .not-listed { margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: 16.5px; display: grid; gap: 6px; }
+      .not-listed strong { color: var(--ink); }
+      @media (max-width: 640px) {
+        .matrix-table thead { display: none; }
+        .matrix-table, .matrix-table tbody, .matrix-table tr, .matrix-table td { display: block; width: 100%; }
+        .matrix-table tr { padding: 10px 0 12px; border-bottom: 1px solid var(--line); }
+        .matrix-table td { border-bottom: 0; padding: 2px 0; }
+        .matrix-table td.f { min-width: 0; font-size: 16.5px; }
+        .matrix-table td.src { white-space: normal; }
+        .matrix-table td.src::before { content: "Credited in README to: "; font-family: "IBM Plex Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); }
+        .matrix-table td.src:empty::before { content: ""; }
+      }
+
+      /* easter egg toast + modal */
+      #eggToast {
+        position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 140%); z-index: 55;
+        width: min(480px, calc(100vw - 32px));
+        background: var(--bg-raise); border: 2px solid var(--accent); border-radius: 10px;
+        padding: 16px 18px; box-shadow: 0 18px 44px rgba(0,0,0,.22);
+        transition: transform .45s cubic-bezier(.2,1.2,.4,1);
+      }
+      #eggToast.show { transform: translate(-50%, 0); }
+      #eggToast .et-k { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+      #eggToast h4 { margin: 4px 0 6px; font-size: 20px; }
+      #eggToast p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+      #eggToast .et-close { position: absolute; top: 8px; right: 12px; background: none; border: 0; font-size: 20px; cursor: pointer; color: var(--ink-soft); line-height: 1; }
+      #eggModalWrap { position: fixed; inset: 0; z-index: 56; background: rgba(10,4,8,.55); display: none; align-items: center; justify-content: center; padding: 20px; }
+      #eggModalWrap.open { display: flex; }
+      #eggModal { background: var(--bg-raise); border: 2px solid var(--accent); border-radius: 12px; max-width: 520px; width: 100%; padding: 28px; position: relative; animation: pageIn .35s ease both; }
+      #eggModal .et-k { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+      #eggModal h4 { margin: 6px 0 10px; font-size: 26px; font-weight: 800; }
+      #eggModal p { margin: 0 0 12px; color: var(--ink-soft); font-size: 16.5px; }
+      #eggModal .et-close { position: absolute; top: 10px; right: 14px; background: none; border: 0; font-size: 22px; cursor: pointer; color: var(--ink-soft); }
+
+      /* Pi-E Life reader */
+      .dedication { border: 1px solid var(--line); background: var(--bg-raise); padding: 28px 30px; text-align: center; margin-bottom: 28px; }
+      .dedication .d-k { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 12px; }
+      .dedication p { margin: 0 auto; max-width: 620px; font-size: 19px; font-style: italic; line-height: 1.6; color: var(--ink); }
+      .made-note { border-left: 3px solid var(--accent); padding: 6px 0 6px 20px; margin: 0 0 36px; max-width: 720px; }
+      .made-note h3 { margin: 0 0 8px; font-size: 20px; }
+      .made-note p { margin: 0; color: var(--ink-soft); font-size: 17px; line-height: 1.65; }
+      .reader { border: 2px solid var(--ink); background: var(--bg-raise); }
+      .reader-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 20px; border-bottom: 1px solid var(--line); }
+      .reader-head .r-title { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+      .reader-head .r-ind { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--ink-soft); }
+      .reader-body { padding: 30px 28px 10px; min-height: 420px; }
+      @media (max-width: 600px) { .reader-body { padding: 22px 18px 6px; } }
+      .demo-page { display: none; }
+      .demo-page.active { display: block; animation: pageIn .35s ease both; }
+      .demo-page p { margin: 0 0 18px; font-size: 18.5px; line-height: 1.75; color: var(--ink); max-width: 680px; }
+      .demo-page p:first-child::first-letter { font-size: 1.4em; font-weight: 600; color: var(--accent); }
+      .reader-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 20px 20px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+      .reader-btn { font-family: "IBM Plex Mono", monospace; font-size: 13.5px; cursor: pointer; padding: 10px 18px; border: 1px solid var(--ink); background: var(--bg); color: var(--ink); border-radius: 3px; }
+      .reader-btn:hover:not(:disabled) { background: var(--accent); color: #fff; border-color: var(--accent); }
+      .reader-btn:disabled { opacity: .35; cursor: default; }
+      .reader-dots { display: flex; gap: 8px; }
+      .reader-dots button { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); font-family: "IBM Plex Mono", monospace; font-size: 12px; cursor: pointer; color: var(--ink-soft); padding: 0; }
+      .reader-dots button[aria-current="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+      .demo-note { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--ink-soft); text-align: center; margin: 14px 0 0; }
+      .coming-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
+      @media (min-width: 760px) { .coming-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+      .coming-item { padding: 18px 0; border-bottom: 1px solid var(--line); }
+      .coming-item h3 { margin: 0 0 6px; font-size: 20px; }
+      .coming-item p { margin: 0; color: var(--ink-soft); font-size: 16px; }
+      .coming-item .c-k { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent3); display: block; margin-bottom: 4px; }
+
+      footer { margin-top: 84px; border-top: 1px solid var(--line); padding: 30px 24px 44px; }
+      .foot-inner { max-width: 1060px; margin: 0 auto; display: flex; gap: 18px; flex-wrap: wrap; align-items: baseline; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--ink-soft); }
+      .foot-inner .spacer { flex: 1; }
+      .foot-inner a, .foot-inner button { color: var(--ink-soft); }
+      .foot-inner button { background: none; border: 0; font: inherit; cursor: pointer; padding: 0; text-decoration: underline; }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .wl, #intro .intro-word span, .page.active { animation: none !important; opacity: 1 !important; }
+        .art-anim-playhead, .art-anim-ring, .art-anim-dash, .art-anim-spin { animation: none !important; }
+        #artLightbox { animation: none !important; }
+        .ticker { animation: none !important; }
+        #intro .intro-sub { animation: none !important; opacity: 1 !important; }
+        #intro .intro-bar i { animation: none !important; width: 100% !important; }
+      }
+    
+      /* ---------- multipage additions ---------- */
+      .crumbs { max-width:1060px; margin:0 auto; padding:14px 24px 0; font-family:"IBM Plex Mono",monospace; font-size:13px; letter-spacing:.06em; color:var(--ink-soft); }
+      .crumbs a { color:var(--accent); text-decoration:none; }
+      .crumbs a:hover { text-decoration:underline; }
+      .crumbs .sep { margin:0 8px; color:var(--ink-soft); }
+      .prevnext { max-width:1060px; margin:0 auto; padding:8px 24px 40px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-family:"IBM Plex Mono",monospace; font-size:14px; }
+      .prevnext a { color:var(--accent); text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:6px 14px; background:var(--bg-raise); }
+      .prevnext a:hover { text-decoration:underline; }
+      .prevnext .spacer-x { flex:1; }
+      .pagenav-inner a.pnav { text-decoration:none; display:inline-block; cursor:pointer; }
+      .pagenav-inner a.pnav[aria-current="page"] { font-weight:700; text-decoration:underline; }
+      .dir-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; margin:18px 0 8px; }
+      .dir-item { border:1px solid var(--line); border-radius:12px; padding:14px 16px; background:var(--bg-raise); }
+      .dir-item a { font-weight:700; text-decoration:none; }
+      .dir-item a:hover { text-decoration:underline; }
+      .dir-item p { margin:6px 0 0; font-size:15px; color:var(--ink-soft); }
+      .prov { display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; padding:3px 9px; border-radius:999px; border:1px solid var(--line); background:var(--chip); color:var(--ink-soft); margin-bottom:10px; }
+      .prov.stated { color:var(--accent); }
+      .ledger-cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:14px 0; }
+      @media (max-width:700px){ .ledger-cols{ grid-template-columns:1fr; } }
+      .ledger-col { border:1px solid var(--line); border-radius:12px; padding:16px 18px; background:var(--bg-raise); }
+      .ledger-col h3 { margin-top:0; }
+      .ledger-block { margin:0 0 34px; }
+    </style>
+  
+  </head>
+  <body>
+    <header class="hero">
+      <canvas id="field" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <div class="flavors" aria-hidden="true">
+          <span class="flavor"><b class="u">up</b> +2/3</span>
+          <span class="flavor"><b class="d">down</b> −1/3</span>
+          <span class="flavor"><b class="s">strange</b> −1/3</span>
+          <span class="flavor"><b class="d">charm</b> +2/3</span>
+          <span class="flavor"><b class="u">top</b> +2/3</span>
+          <span class="flavor"><b class="s">bottom</b> −1/3</span>
+        </div>
+        <h1 class="wordmark" aria-label="artistso.com — tap the letters, some hide secrets"><button class="wl" data-idx="0" data-ch="a" style="animation-delay:.05s" aria-label="letter a">a</button><button class="wl" data-idx="1" data-ch="r" style="animation-delay:.11s" aria-label="letter r">r</button><button class="wl" data-idx="2" data-ch="t" style="animation-delay:.17s" aria-label="letter t">t</button><button class="wl" data-idx="3" data-ch="i" style="animation-delay:.23s" aria-label="letter i">i</button><button class="wl" data-idx="4" data-ch="s" style="animation-delay:.29s" aria-label="letter s">s</button><button class="wl" data-idx="5" data-ch="t" style="animation-delay:.35s" aria-label="letter t">t</button><button class="wl" data-idx="6" data-ch="s" style="animation-delay:.41s" aria-label="letter s">s</button><button class="wl" data-idx="7" data-ch="o" style="animation-delay:.47s" aria-label="letter o">o</button><button class="wl dot" data-idx="8" data-ch="." style="animation-delay:.53s" aria-label="the dot — the zero point">.</button><button class="wl" data-idx="9" data-ch="c" style="animation-delay:.59s" aria-label="letter c">c</button><button class="wl" data-idx="10" data-ch="o" style="animation-delay:.65s" aria-label="letter o">o</button><button class="wl" data-idx="11" data-ch="m" style="animation-delay:.71s" aria-label="letter m">m</button></h1>
+        <p class="hero-sub">My work — theoretical physics, mathematics, drawing software, a language built from waves, and my life, written down in full. <em>Fundamental, and a little strange.</em></p>
+        <div class="themes" role="group" aria-label="Colour theme">
+          <span class="tlabel">Theme</span>
+          <button class="tswatch" data-theme-name="pink" aria-pressed="true"><i style="background:#e91e63"></i>Pink</button>
+          <button class="tswatch" data-theme-name="blue" aria-pressed="false"><i style="background:#2563eb"></i>Blue</button>
+          <button class="tswatch" data-theme-name="green" aria-pressed="false"><i style="background:#16a34a"></i>Green</button>
+          <button class="tswatch" data-theme-name="yellow" aria-pressed="false"><i style="background:#eab308"></i>Yellow</button>
+          <button class="tswatch" data-theme-name="purple" aria-pressed="false"><i style="background:#8b5cf6"></i>Purple</button>
+          <button class="tswatch" data-theme-name="orange" aria-pressed="false"><i style="background:#f97316"></i>Orange</button>
+          <button class="tswatch" data-theme-name="red" aria-pressed="false"><i style="background:#ef4444"></i>Red</button>
+        </div>
+        <div class="hero-meta">
+          <span>artistso.com · home of @soquarky</span>
+          <a href="https://github.com/artistso">github.com/artistso</a>
+          <a href="https://artistso.com/">about</a>
+          <a href="https://story.artistso.com/">trail</a>
+          <a href="https://apps.artistso.com/">apps</a>
+          <a href="https://work.artistso.com/">commissions</a>
+          <a href="https://physics.artistso.com/">physics</a>
+          <a href="https://story.artistso.com/">writing</a>
+          <a href="https://work.artistso.com/">links</a>
+        </div>
+        <p class="hint">the field behind this text is live — move through it, click to scatter. And the title above is not just a title: tap its letters. Single letters hide small secrets; some combinations hide bigger ones. Your keyboard works too.</p>
+        <p class="egg-count" id="eggCount" aria-live="polite">secrets found 0 / 16</p>
+        <div class="egg-log" id="eggLog" aria-label="Secrets found"></div>
+      </div>
+    </header>
+
+    
+    <nav class="pagenav" aria-label="Pages">
+      <div class="pagenav-inner">
+        <a class="pnav" href="https://artistso.com/">Home</a>
+        <a class="pnav" href="https://physics.artistso.com/">Physics &amp; maths</a>
+        <a class="pnav" href="https://apps.artistso.com/">Apps &amp; code</a>
+        <a class="pnav" href="projects.html">Projects</a>
+        <a class="pnav" href="https://story.artistso.com/">Story &amp; writing</a>
+        <a class="pnav" href="https://ledger.artistso.com/">Analytical Ledger</a>
+        <a class="pnav" href="artwork.html">Artwork</a>
+        <a class="pnav" href="pie.html">It&#x27;s a Pi-E Life</a>
+        <a class="pnav" href="letter.html">The Letter</a>
+        <a class="pnav" href="shop.html">Shop &amp; free</a>
+        <a class="pnav" href="https://work.artistso.com/">Work &amp; links</a>
+        <a class="pnav" href="facebook.html">Facebook</a>
+        <a class="pnav" href="twitch.html" aria-current="page">Twitch</a>
+        <a class="pnav" href="kick.html">Kick</a>
+        <a class="pnav" href="reddit.html">Reddit</a>
+        <a class="pnav" href="youtube.html">YouTube</a>
+        <a class="pnav" href="xpage.html">X</a>
+        <a class="pnav" href="gsite.html">Google Site</a>
+        <a class="pnav" href="calendar.html">Calendar</a>
+        <a class="pnav" href="github.html">GitHub</a>
+        <a class="pnav" href="docs.html">Docs</a>
+        <a class="pnav" href="notebooks.html">NotebookLM</a>
+        <a class="pnav" href="reviews.html">Movie reviews</a>
+        <a class="pnav" href="wiki.html">Wiki</a>
+        <a class="pnav" href="forum.html">Forum</a>
+      </div>
+    </nav>
+    <div class="crumbs"><a href="https://artistso.com/">Home</a><span class="sep">&gt;</span>Twitch</div>
+    <main>
+
+      <section>
+        <div class="sec-head">
+          <h2>Twitch</h2>
+          <span class="tag">lot 02 · streaming</span>
+        </div>
+        <p class="lede">My Twitch room: live drawing, animation sessions, and build-alongs.</p>
+        <div class="plat-grid">
+          <div>
+            <h3>Planned streams</h3>
+            <p>Drawing and animation sessions in SoCreate and Pluart, physics board work, and ALUMELA readings — the work, done live, questions taken as they come.</p>
+          </div>
+          <div>
+            <h3>Already streaming</h3>
+            <p>Kick is live and verified: <a href="https://kick.com/soquarkly">kick.com/soquarkly</a> — see the <a class="goto-link" href="kick.html">Kick page →</a>.</p>
+          </div>
+        </div>
+      </section>
+      
+    </main>
+    <div class="prevnext"><a href="facebook.html">&larr; Facebook</a><a href="kick.html">Kick &rarr;</a></div>
+    <footer>
+      <div class="foot-inner">
+        <span>artistso.com</span>
+        <span>Steven Owens</span>
+        <span class="spacer"></span>
+        <a href="https://github.com/artistso">GitHub — artistso</a>
+        <a href="https://x.com/soquarky">X — @soquarky</a>
+        <a href="https://soquarky.substack.com">Substack</a>
+        <a href="https://artistso.com/">back to top ↑</a>
+      </div>
+    </footer>
+    
+
+    <!-- easter egg toast -->
+    <div id="eggToast" role="status">
+      <button class="et-close" id="eggToastClose" aria-label="Close secret">×</button>
+      <div class="et-k" id="eggToastK">secret found</div>
+      <h4 id="eggToastTitle"></h4>
+      <p id="eggToastText"></p>
+    </div>
+
+    <!-- easter egg modal (combos) -->
+    <div id="eggModalWrap">
+      <div id="eggModal" role="dialog" aria-modal="true">
+        <button class="et-close" id="eggModalClose" aria-label="Close">×</button>
+        <div class="et-k" id="eggModalK">combination unlocked</div>
+        <h4 id="eggModalTitle"></h4>
+        <p id="eggModalText"></p>
+        <p id="eggModalExtra" style="margin-bottom:0"></p>
+      </div>
+    </div>
+
+    
+    <script>
+      (function () {
+        var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var darkMq = window.matchMedia('(prefers-color-scheme: dark)');
+
+        /* ---------- intro ---------- */
+        var intro = document.getElementById('intro');
+        function dismissIntro() {
+          if (!intro || intro.classList.contains('done')) return;
+          intro.classList.add('done');
+          setTimeout(function () { if (intro.parentNode) intro.parentNode.removeChild(intro); }, 800);
+        }
+        if (reduced) { dismissIntro(); }
+        else if (intro) { setTimeout(dismissIntro, 1450); intro.addEventListener('click', dismissIntro); }
+
+        /* ---------- particle field + themes ---------- */
+        var canvas = document.getElementById('field');
+        var ctx = canvas.getContext('2d');
+        var hero = canvas.parentElement;
+        var PALETTES = {
+          pink:   { light: ['216,27,96', '15,118,110', '217,119,6'],   dark: ['240,98,146', '45,212,191', '251,191,36'] },
+          blue:   { light: ['29,78,216', '14,116,144', '217,119,6'],   dark: ['96,165,250', '34,211,238', '251,191,36'] },
+          green:  { light: ['21,128,61', '15,118,110', '180,83,9'],    dark: ['74,222,128', '45,212,191', '251,191,36'] },
+          yellow: { light: ['161,98,7', '180,83,9', '219,39,119'],     dark: ['250,204,21', '251,191,36', '244,114,182'] },
+          purple: { light: ['124,58,237', '219,39,119', '8,145,178'],  dark: ['167,139,250', '244,114,182', '34,211,238'] },
+          orange: { light: ['234,88,12', '185,28,28', '161,98,7'],     dark: ['251,146,60', '248,113,113', '250,204,21'] },
+          red:    { light: ['220,38,38', '157,23,77', '180,83,9'],     dark: ['248,113,113', '244,114,182', '251,191,36'] }
+        };
+        function palette() {
+          var t = document.documentElement.getAttribute('data-theme') || 'pink';
+          var p = PALETTES[t] || PALETTES.pink;
+          return darkMq.matches ? p.dark : p.light;
+        }
+        var W = 0, H = 0, parts = [], mouse = { x: -9999, y: -9999 }, raf = null;
+        function resize() {
+          var r = hero.getBoundingClientRect();
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          W = r.width; H = r.height;
+          canvas.width = W * dpr; canvas.height = H * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        function spawn(n, x, y, burst) {
+          var C = palette();
+          for (var i = 0; i < n; i++) {
+            var a = Math.random() * Math.PI * 2;
+            var sp = burst ? 1.2 + Math.random() * 2.6 : 0.25 + Math.random() * 0.75;
+            parts.push({
+              x: x !== undefined ? x : Math.random() * W,
+              y: y !== undefined ? y : Math.random() * H,
+              vx: Math.cos(a) * sp, vy: Math.sin(a) * sp,
+              r: 1.6 + Math.random() * 2.4,
+              c: C[(Math.random() * C.length) | 0],
+              life: burst ? 90 : -1
+            });
+          }
+        }
+        function burstAt(clientX, clientY, n) {
+          var r = hero.getBoundingClientRect();
+          spawn(n || 22, clientX - r.left, clientY - r.top, true);
+          if (parts.length > 240) parts.splice(0, parts.length - 240);
+        }
+        window.__burstAt = burstAt;
+        function draw() {
+          ctx.clearRect(0, 0, W, H);
+          var i, j, p, q, dx, dy, d2;
+          for (i = parts.length - 1; i >= 0; i--) {
+            p = parts[i];
+            if (p.life > 0) { p.life--; p.vx *= 0.985; p.vy *= 0.985; }
+            if (p.life === 0) { parts.splice(i, 1); continue; }
+            p.x += p.vx; p.y += p.vy;
+            dx = p.x - mouse.x; dy = p.y - mouse.y; d2 = dx * dx + dy * dy;
+            if (d2 < 8100 && d2 > 0.01) { var d = Math.sqrt(d2); p.x += (dx / d) * 0.7; p.y += (dy / d) * 0.7; }
+            if (p.x < -10) p.x = W + 10; if (p.x > W + 10) p.x = -10;
+            if (p.y < -10) p.y = H + 10; if (p.y > H + 10) p.y = -10;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(' + p.c + ',0.75)';
+            ctx.fill();
+          }
+          var base = parts.slice(0, 80);
+          for (i = 0; i < base.length; i++) {
+            for (j = i + 1; j < base.length; j++) {
+              p = base[i]; q = base[j];
+              dx = p.x - q.x; dy = p.y - q.y; d2 = dx * dx + dy * dy;
+              if (d2 < 110 * 110) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+                ctx.strokeStyle = 'rgba(' + p.c + ',' + (0.16 * (1 - d2 / 12100)).toFixed(3) + ')';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+              }
+            }
+          }
+          raf = requestAnimationFrame(draw);
+        }
+        resize();
+        spawn(Math.max(28, Math.min(70, Math.floor(W / 16))));
+        if (reduced) {
+          ctx.clearRect(0, 0, W, H);
+          for (var i = 0; i < parts.length; i++) {
+            var p0 = parts[i];
+            ctx.beginPath(); ctx.arc(p0.x, p0.y, p0.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(' + p0.c + ',0.75)'; ctx.fill();
+          }
+        } else { draw(); }
+        window.addEventListener('resize', resize);
+        hero.addEventListener('pointermove', function (e) {
+          var r = hero.getBoundingClientRect();
+          mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+        });
+        hero.addEventListener('pointerleave', function () { mouse.x = -9999; mouse.y = -9999; });
+        hero.addEventListener('pointerdown', function (e) {
+          if (e.target.closest('.wl') || e.target.closest('.tswatch') || e.target.closest('a')) return;
+          burstAt(e.clientX, e.clientY, 10);
+          var r = hero.getBoundingClientRect();
+          var x = e.clientX - r.left, y = e.clientY - r.top;
+          for (var i = 0; i < parts.length; i++) {
+            var p = parts[i], dx = p.x - x, dy = p.y - y, d = Math.sqrt(dx * dx + dy * dy) || 1;
+            if (d < 160) { p.vx += (dx / d) * 2.4; p.vy += (dy / d) * 2.4; }
+          }
+        });
+        document.addEventListener('visibilitychange', function () {
+          if (reduced) return;
+          if (document.hidden && raf) { cancelAnimationFrame(raf); raf = null; }
+          else if (!document.hidden && !raf) { draw(); }
+        });
+
+        /* ---------- theme switching ---------- */
+        var swatches = document.querySelectorAll('.tswatch');
+        function setTheme(name, silent) {
+          document.documentElement.setAttribute('data-theme', name);
+          swatches.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-theme-name') === name ? 'true' : 'false'); });
+          var C = palette();
+          parts.forEach(function (p) { p.c = C[(Math.random() * C.length) | 0]; });
+          if (reduced) { /* static frame keeps original colours; fine */ }
+          if (!silent) {
+            var r = hero.getBoundingClientRect();
+            burstAt(r.left + r.width / 2, r.top + r.height / 2, 26);
+          }
+        }
+        swatches.forEach(function (b) {
+          b.addEventListener('click', function () { setTheme(b.getAttribute('data-theme-name')); });
+        });
+        if (darkMq.addEventListener) darkMq.addEventListener('change', function () { setTheme(document.documentElement.getAttribute('data-theme') || 'pink', true); });
+
+        /* ---------- multipage: navigation is plain links; no router ---------- */
+        document.querySelectorAll('[data-scroll]').forEach(function (el) {
+          el.addEventListener('click', function () {
+            var target = document.getElementById(el.getAttribute('data-scroll'));
+            if (target) target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+          });
+        });
+
+        /* ---------- easter eggs ---------- */
+        var LETTER_EGGS = [
+          { name: 'a · ALUMELA', title: 'a — the first wave', text: 'A is for ALUMELA, the language built from waves. Its brightest words — lumalu, mela, lela — each measure exactly |Ψ|² = 3.00. This one rests at the start of everything: a for artist, a for ALUMELA.' },
+          { name: 'r · resonance', title: 'r — resonance', text: 'R for the Resonance Engine: raw thoughts in, structured queries through, verified answers out — an architecture modelled on a memory that indexes by rooms and walks them in sequence.' },
+          { name: 't · time', title: 't — time, in quadrature', text: 'The first T is time itself. Quadrature Time: the Hilbert-Space Quadrature Conjecture, manuscript and code, 24/24 tests passing. Time here is not a line — it has components at right angles.' },
+          { name: 'i · the self', title: 'i — the one travelling', text: 'In Steven’s notation, I is the self: identity, the one travelling. A long daylight saving that does not land back on its own timeline stays at i, in superposition of π.' },
+          { name: 's · Sunshine', title: 's — Sunshine', text: 'The first S belongs to Sunshine: “my S-O-N shine,” Boy Blue — warmth, heat, love, thermodynamics. The source term of the Harmonious Love Theorem.' },
+          { name: 't · ternary', title: 't — the ternary t', text: 'The second T is GUTTY’s: balanced ternary, −1 / 0 / +1, where “maybe” is an active state and not an absence. Rise, crest, fall — the ternary pulse ALUMELA rides.' },
+          { name: 's · strange', title: 's — strange, −1/3', text: 'The second S is the strange quark: charge −1/3, flavour strange. soquarky was never just a name — it is a flavour chart. Fundamental, and a little strange.' },
+          { name: 'o · Ocean Shores', title: 'o — Ocean Shores', text: 'The first O is a place: Ocean Shores, Washington — the base, the shore the Ultramile keeps returning to. Lovely Melody is set here too.' },
+          { name: '· · ZERO', title: 'the dot — ZERO', text: 'You tapped the dot. In the Universe-line, the origin is a circle labelled ZERO, and every ring grows outward from it: +1, +2, +3 on one branch, the negative branch stepping by 3 on the other. Everything on this site radiates from this point.' },
+          { name: 'c · convergence', title: 'c — convergence', text: 'C is convergence: the pivot of 2024–25, when the pieces started finding each other — boards, theorems, books, apps — on the road to May 2026, when the name came back whole.' },
+          { name: 'o · the ring', title: 'o — the ring itself', text: 'The second O is the zero-ring: a circle growing outward from 0 with no known end and no collapse point. Coincidences land every 6 — exactly where every prime greater than 3 lives.' },
+          { name: 'm · memory', title: 'm — memory', text: 'M is memory: reliable from age 3, interrupted in January 2018, rebuilt from the ABCs past quantum mechanics. The Ultramile — a mile walked a long time, and meant to be walked forever.' }
+        ];
+        var COMBOS = {
+          art: { name: 'combo · ART', title: 'You spelled ART', text: 'a + r + t — the first three letters, in order. Of course art comes first: the domain reads “art,” and art is in everything here — the physics is drawn, the apps are drawn, the language is drawn as sine arches.', extra: 'Steven’s line on the name: it was a smart choice — it reads as art, but the life is bigger than the label.' },
+          cat: { name: 'combo · CAT', title: 'You spelled CAT', text: 'c + a + t — and the constants answer. Sunshine is the source term: warmth, heat, love. Akira is the containing field: the mesh everything else lives in. Encoded as operators in the Harmonious Love Theorem — compassion as the anti-recursion that binds the recursion closed.', extra: 'Booshy booshy. Boochy boochy. That is the whole proof.' },
+          com: { name: 'combo · .COM', title: 'You spelled .COM', text: 'c + o + m — the ending, tapped out in full. A .com is a shopfront: commissions are open — art and animation, online instruction, pen-first software. First reply sorts scope and price.', extra: '' },
+          grand: { name: 'combo · THE WHOLE TITLE', title: 'You walked the whole title', text: 'a-r-t-i-s-t-s-o-.-c-o-m, every letter, in order, start to finish — the way the trail itself was walked: beginning, then end, then back to the beginning until the pieces converged.', extra: 'All seven themes just cycled past. Pink is home. The trail continues here.' }
+        };
+        var TOTAL = 16;
+        var foundSet = {};
+        var foundCount = 0;
+        var eggCountEl = document.getElementById('eggCount');
+        var eggLogEl = document.getElementById('eggLog');
+        var toast = document.getElementById('eggToast');
+        var toastTimer = null;
+        function markFound(key, label) {
+          if (foundSet[key]) return false;
+          foundSet[key] = true; foundCount++;
+          eggCountEl.textContent = 'secrets found ' + foundCount + ' / ' + TOTAL + (foundCount === TOTAL ? ' — every one. the field is yours.' : '');
+          var chip = document.createElement('span');
+          chip.textContent = label;
+          eggLogEl.appendChild(chip);
+          return true;
+        }
+        function showToast(kicker, title, text) {
+          document.getElementById('eggToastK').textContent = kicker;
+          document.getElementById('eggToastTitle').textContent = title;
+          document.getElementById('eggToastText').textContent = text;
+          toast.classList.add('show');
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 5200);
+        }
+        document.getElementById('eggToastClose').addEventListener('click', function () { toast.classList.remove('show'); });
+        var modalWrap = document.getElementById('eggModalWrap');
+        function showModal(combo) {
+          document.getElementById('eggModalK').textContent = combo.name;
+          document.getElementById('eggModalTitle').textContent = combo.title;
+          document.getElementById('eggModalText').textContent = combo.text;
+          var ex = document.getElementById('eggModalExtra');
+          ex.textContent = combo.extra || '';
+          ex.style.display = combo.extra ? 'block' : 'none';
+          modalWrap.classList.add('open');
+        }
+        document.getElementById('eggModalClose').addEventListener('click', function () { modalWrap.classList.remove('open'); });
+        modalWrap.addEventListener('click', function (e) { if (e.target === modalWrap) modalWrap.classList.remove('open'); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') modalWrap.classList.remove('open'); });
+
+        var seq = '';
+        var expectedIdx = 0;
+        var themeCycleTimer = null;
+        function fireCombo(key) {
+          var combo = COMBOS[key];
+          var isNew = markFound('combo-' + key, combo.name);
+          showModal(combo);
+          if (key === 'grand') {
+            var order = ['blue', 'green', 'yellow', 'purple', 'orange', 'red', 'pink'];
+            var i = 0;
+            clearInterval(themeCycleTimer);
+            themeCycleTimer = setInterval(function () {
+              setTheme(order[i], true);
+              i++;
+              if (i >= order.length) clearInterval(themeCycleTimer);
+            }, 380);
+          }
+          if (key === 'com') {
+            setTimeout(function () { if (!modalWrap.classList.contains('open')) window.location.href = 'connect.html'; }, 10);
+          }
+          return isNew;
+        }
+        function tapLetter(btn, viaKey) {
+          var idx = parseInt(btn.getAttribute('data-idx'), 10);
+          var ch = btn.getAttribute('data-ch');
+          btn.classList.add('lit');
+          btn.classList.remove('pop'); void btn.offsetWidth; btn.classList.add('pop');
+          var r = btn.getBoundingClientRect();
+          burstAt(r.left + r.width / 2, r.top + r.height / 2, 18);
+          var egg = LETTER_EGGS[idx];
+          var isNew = markFound('letter-' + idx, egg.name);
+          // sequence tracking (combos)
+          seq = (seq + ch).slice(-12);
+          var comboFired = false;
+          if (seq.slice(-3) === 'art') { fireCombo('art'); comboFired = true; seq = ''; }
+          else if (seq.slice(-3) === 'cat') { fireCombo('cat'); comboFired = true; seq = ''; }
+          else if (seq.slice(-3) === 'com') { fireCombo('com'); comboFired = true; seq = ''; }
+          // full-title tracking (by position)
+          if (idx === expectedIdx) { expectedIdx++; } else { expectedIdx = (idx === 0) ? 1 : 0; }
+          if (expectedIdx >= 12) { expectedIdx = 0; fireCombo('grand'); comboFired = true; seq = ''; }
+          if (!comboFired) {
+            showToast(isNew ? 'secret found · ' + foundCount + ' of ' + TOTAL : 'already found — it still sparks', egg.title, egg.text);
+          }
+        }
+        var letterBtns = document.querySelectorAll('.wl');
+        letterBtns.forEach(function (btn) {
+          btn.addEventListener('click', function () { tapLetter(btn, false); });
+        });
+        /* ---------- Pi-E Life demo reader ---------- */
+        (function () {
+          var reader = document.getElementById('pieReader');
+          if (!reader) return;
+          var demoPages = reader.querySelectorAll('.demo-page');
+          var ind = document.getElementById('pieInd');
+          var prev = document.getElementById('piePrev');
+          var next = document.getElementById('pieNext');
+          var dots = reader.querySelectorAll('[data-pie-dot]');
+          var cur = 1, total = demoPages.length;
+          function show(n) {
+            cur = Math.max(1, Math.min(total, n));
+            demoPages.forEach(function (pg) { pg.classList.toggle('active', parseInt(pg.getAttribute('data-demo'), 10) === cur); });
+            ind.textContent = 'Demo page ' + cur + ' of ' + total;
+            prev.disabled = cur === 1;
+            next.disabled = cur === total;
+            dots.forEach(function (d) { d.setAttribute('aria-current', parseInt(d.getAttribute('data-pie-dot'), 10) === cur ? 'true' : 'false'); });
+          }
+          prev.addEventListener('click', function () { show(cur - 1); });
+          next.addEventListener('click', function () { show(cur + 1); });
+          dots.forEach(function (d) { d.addEventListener('click', function () { show(parseInt(d.getAttribute('data-pie-dot'), 10)); }); });
+          show(1);
+        })();
+
+        /* ---------- artwork masonry: filter, lightbox, in-view animation ---------- */
+        (function () {
+          var masonry = document.getElementById('artMasonry');
+          if (!masonry) return;
+          var tiles = Array.prototype.slice.call(masonry.querySelectorAll('[data-art-tile]'));
+          var countEl = document.getElementById('artCount');
+          var filterBtns = document.querySelectorAll('[data-art-filter]');
+          var curFilter = 'all';
+          function visibleTiles() {
+            return tiles.filter(function (t) { return !t.hidden; });
+          }
+          function applyFilter(name) {
+            curFilter = name;
+            var shown = 0;
+            tiles.forEach(function (t) {
+              var on = name === 'all' || t.getAttribute('data-cat') === name;
+              t.hidden = !on;
+              if (on) shown++;
+            });
+            filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-art-filter') === name ? 'true' : 'false'); });
+            if (countEl) countEl.textContent = shown + (shown === 1 ? ' placeholder' : ' placeholders') + ' on the wall' + (name === 'all' ? '' : ' · ' + name);
+          }
+          filterBtns.forEach(function (b) {
+            b.addEventListener('click', function () { applyFilter(b.getAttribute('data-art-filter')); });
+          });
+
+          /* animation tiles: motion runs only while the tile is in view */
+          var animTiles = tiles.filter(function (t) { return t.getAttribute('data-cat') === 'animation' || t.querySelector('.art-anim-spin, .art-anim-ring, .art-anim-dash, .art-anim-playhead'); });
+          if (!reduced && 'IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+              entries.forEach(function (en) {
+                en.target.classList.toggle('is-playing', en.isIntersecting);
+              });
+            }, { threshold: 0.25 });
+            animTiles.forEach(function (t) { io.observe(t); });
+          } else if (!reduced) {
+            animTiles.forEach(function (t) { t.classList.add('is-playing'); });
+          }
+
+          /* lightbox */
+          var wrap = document.getElementById('artLightboxWrap');
+          var stage = document.getElementById('artLbStage');
+          var titleEl = document.getElementById('artLbTitle');
+          var catEl = document.getElementById('artLbCat');
+          var medEl = document.getElementById('artLbMedium');
+          var descEl = document.getElementById('artLbDesc');
+          var indEl = document.getElementById('artLbInd');
+          var closeBtn = document.getElementById('artLbClose');
+          var prevBtn = document.getElementById('artLbPrev');
+          var nextBtn = document.getElementById('artLbNext');
+          var current = null;
+          var lastFocus = null;
+          function catLabel(t) {
+            var c = t.getAttribute('data-cat');
+            return (c === 'animation' ? 'Animation' : c === 'illustration' ? 'Illustration' : 'Diagram') + ' · placeholder';
+          }
+          function render(tile) {
+            current = tile;
+            var vis = visibleTiles();
+            var idx = vis.indexOf(tile);
+            titleEl.innerHTML = tile.getAttribute('data-title');
+            catEl.textContent = catLabel(tile);
+            medEl.textContent = tile.getAttribute('data-medium');
+            descEl.textContent = tile.getAttribute('data-desc');
+            stage.innerHTML = '';
+            var svg = tile.querySelector('.art-media svg');
+            if (svg) {
+              var clone = svg.cloneNode(true);
+              clone.removeAttribute('role');
+              stage.appendChild(clone);
+            }
+            wrap.classList.toggle('is-playing', tile.getAttribute('data-cat') === 'animation' || !!tile.querySelector('.art-anim-spin'));
+            indEl.textContent = (idx + 1) + ' of ' + vis.length + (curFilter === 'all' ? '' : ' · ' + curFilter);
+            prevBtn.disabled = vis.length < 2;
+            nextBtn.disabled = vis.length < 2;
+          }
+          function openLb(tile) {
+            lastFocus = tile;
+            render(tile);
+            wrap.classList.add('open');
+            wrap.setAttribute('aria-hidden', 'false');
+            closeBtn.focus();
+          }
+          function closeLb() {
+            if (!wrap.classList.contains('open')) return;
+            wrap.classList.remove('open', 'is-playing');
+            wrap.setAttribute('aria-hidden', 'true');
+            stage.innerHTML = '';
+            current = null;
+            if (lastFocus) lastFocus.focus();
+          }
+          function step(dir) {
+            var vis = visibleTiles();
+            if (!current || vis.length < 2) return;
+            var idx = vis.indexOf(current);
+            render(vis[(idx + dir + vis.length) % vis.length]);
+          }
+          tiles.forEach(function (t) {
+            t.addEventListener('click', function () { openLb(t); });
+          });
+          closeBtn.addEventListener('click', closeLb);
+          prevBtn.addEventListener('click', function () { step(-1); });
+          nextBtn.addEventListener('click', function () { step(1); });
+          wrap.addEventListener('click', function (e) { if (e.target === wrap) closeLb(); });
+          document.addEventListener('keydown', function (e) {
+            if (!wrap.classList.contains('open')) return;
+            if (e.key === 'Escape') { e.preventDefault(); closeLb(); }
+            else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+            else if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+          });
+          document.querySelectorAll('.pnav').forEach(function (b) {
+            b.addEventListener('click', closeLb);
+          });
+        })();
+
+        /* ---------- forum preview (in-session only) ---------- */
+        document.querySelectorAll('[data-topic]').forEach(function (topic) {
+          var score = 0, myVote = 0;
+          var scoreEl = topic.querySelector('[data-score]');
+          var upBtn = topic.querySelector('[data-vote="up"]');
+          var downBtn = topic.querySelector('[data-vote="down"]');
+          function renderVote() {
+            scoreEl.textContent = score;
+            upBtn.setAttribute('aria-pressed', myVote === 1 ? 'true' : 'false');
+            downBtn.setAttribute('aria-pressed', myVote === -1 ? 'true' : 'false');
+          }
+          upBtn.addEventListener('click', function () { score -= myVote; myVote = myVote === 1 ? 0 : 1; score += myVote; renderVote(); });
+          downBtn.addEventListener('click', function () { score -= myVote; myVote = myVote === -1 ? 0 : -1; score += myVote; renderVote(); });
+          var box = topic.querySelector('.cmt-box');
+          var count = topic.querySelector('[data-count]');
+          var list = topic.querySelector('[data-list]');
+          box.addEventListener('input', function () { count.textContent = box.value.length + ' / 250'; });
+          topic.querySelector('[data-post]').addEventListener('click', function () {
+            var text = box.value.trim().slice(0, 250);
+            if (!text) return;
+            var li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            box.value = ''; count.textContent = '0 / 250';
+          });
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.target && (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT')) return;
+          if (e.metaKey || e.ctrlKey || e.altKey || e.key.length !== 1) return;
+          var k = e.key.toLowerCase();
+          if ('artistso.com'.indexOf(k) === -1) return;
+          for (var i = 0; i < letterBtns.length; i++) {
+            if (letterBtns[i].getAttribute('data-ch') === k) { tapLetter(letterBtns[i], true); break; }
+          }
+        });
+      })();
+    
+    </script>
+  </body>
+</html>
