@@ -25,3 +25,10 @@ Source of Steven Owens' live personal site, [artistso.com](https://artistso.com)
 Merging to `main` does **not** auto-deploy. Atlas deploys verified batches to DreamHost manually, at $0 cost.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the house rules before opening a PR.
+
+## Credits
+
+- **Steven Owens** — owner, author, final word.
+- **Atlas (Muse)** — assistant and collaborator: reviews, finalizes, builds and deploys alongside Steven.
+
+Steven's words, Nov 25, 2026: "It's not just my website anymore. It's our website."
