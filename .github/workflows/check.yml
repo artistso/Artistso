@@ -1,0 +1,27 @@
+name: check
+
+on:
+  push:
+    branches: ["main", "arena/**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  audit:
+    name: site audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Shared chrome is up to date
+        run: python3 tools/build_site.py --check
+
+      - name: Sitemap and robots are up to date
+        run: python3 tools/make_sitemap.py --check
+
+      - name: Site audit
+        run: python3 tools/site_audit.py

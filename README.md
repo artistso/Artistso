@@ -4,13 +4,15 @@ Source of Steven Owens' live personal site, [artistso.com](https://artistso.com)
 
 ## Structure
 
-- **Repo root** — the main-domain pages (29 HTML files: home, physics, apps, story, connect, ledger, artwork, blog, statement, laws, journey, and the rest).
+- **Repo root** — the main-domain pages (32 HTML files: home, physics, apps, story, connect, ledger, artwork, blog, statement, laws, journey, and the rest), plus `404.html`, `sitemap.xml` and `robots.txt`.
 - **Subfolders** — one per subdomain, each holding that subdomain's `index.html`:
   - `physics/` → physics.artistso.com
   - `apps/` → apps.artistso.com
   - `story/` → story.artistso.com
   - `work/` → work.artistso.com
   - `ledger/` → ledger.artistso.com
+  - `principalia/` → principalia.artistso.com
+- **`tools/`** — the build and check scripts (Python 3, stdlib only). One manifest in `tools/pages.py` knows every page; `tools/build_site.py` writes the shared head metadata, skip link, page nav and per-section nav styling, and `tools/site_audit.py` checks the result.
 - **blog.artistso.com** is WordPress and is **not** in this repo.
 - The board at artistso.com/board/ is a separate PHP app and is **not** in this repo.
 
@@ -24,7 +26,19 @@ Source of Steven Owens' live personal site, [artistso.com](https://artistso.com)
 
 Merging to `main` does **not** auto-deploy. Atlas deploys verified batches to DreamHost manually, at $0 cost.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the house rules before opening a PR.
+## Check before you push
+
+See [BUILD.md](BUILD.md) for the build and check routine:
+
+```bash
+python3 tools/build_site.py       # shared chrome on every page
+python3 tools/make_sitemap.py     # sitemap.xml + robots.txt
+python3 tools/site_audit.py       # must end: 0 errors
+```
+
+CI runs the same three checks on every push and pull request.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the house rules.
 
 ## Credits
 

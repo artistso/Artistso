@@ -4,9 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <link rel="icon" href="data:," />
     <title>Forum — artistso.com · Steven Owens</title>
-    <meta name="description" content="artistso.com: I'm Steven Owens — artist, animator, educator, developer. My apps, my theoretical physics and mathematics, a wave language, my long-form writing on Substack, and open commissions." />
+    <meta name="description" content="Discussion for the work — vote a topic up or down and make your point in 250 characters or fewer. Runs in this browser session only." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -504,9 +503,38 @@
       .ledger-col h3 { margin-top:0; }
       .ledger-block { margin:0 0 34px; }
     </style>
-  
+    <!-- build:head — written by tools/build_site.py; do not hand-edit -->
+    <style id="nav-organic-thread">
+    /* Organic nav upgrade 2026-11-26: forum — thread. CSS only; links and breadcrumbs unchanged. */
+    .pagenav{padding-bottom:15px;}
+    .pagenav::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:14px;background:url("%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='120'%20height='16'%20viewBox='0%200%20120%2016'%3E%3Cpath%20d='M10%203%20H46%20V11%20H26%20L20%2014%20V11%20H10%20Z'%20fill='none'%20stroke='%23db2777'%20stroke-width='1.3'%20stroke-linejoin='round'/%3E%3Cpath%20d='M18%207%20H38'%20stroke='%23f472b6'%20stroke-width='1.1'/%3E%3Cpath%20d='M66%205%20H104%20V12%20H84%20L78%2015%20V12%20H66%20Z'%20fill='none'%20stroke='%23f472b6'%20stroke-width='1.2'%20stroke-linejoin='round'/%3E%3C/svg%3E") repeat-x left center;background-size:120px 14px;pointer-events:none;}
+    .pagenav{position:sticky;}
+    .pnav{border-radius:8px 8px 8px 2px;transition:background .18s ease,color .18s ease;}
+    .crumbs .sep{color:var(--accent);font-weight:700;}
+    </style>
+    <style id="chrome-a11y">
+    /* Skip link + focus ring. Written by tools/build_site.py — do not hand-edit. */
+    .skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--accent);color:#fff;padding:10px 16px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;border-radius:0 0 6px 0;text-decoration:none;}
+    .skip:focus{left:0;}
+    a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+    </style>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23db2777'/%3E%3Ccircle%20cx='28'%20cy='32'%20r='13'%20fill='none'%20stroke='%23fff'%20stroke-width='6'/%3E%3Ccircle%20cx='48'%20cy='42'%20r='5'%20fill='%23fff'/%3E%3C/svg%3E" />
+    <link rel="canonical" href="https://artistso.com/forum.html" />
+    <meta name="theme-color" content="#fff5f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#170d12" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="artistso.com" />
+    <meta property="og:title" content="Forum — artistso.com · Steven Owens" />
+    <meta property="og:description" content="Discussion for the work — vote a topic up or down and make your point in 250 characters or fewer. Runs in this browser session only." />
+    <meta property="og:url" content="https://artistso.com/forum.html" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Forum — artistso.com · Steven Owens" />
+    <meta name="twitter:description" content="Discussion for the work — vote a topic up or down and make your point in 250 characters or fewer. Runs in this browser session only." />
+    <!-- /build:head -->
   </head>
   <body>
+    <a class="skip" href="#main-content">Skip to content</a>
     <header class="hero">
       <canvas id="field" aria-hidden="true"></canvas>
       <div class="hero-inner">
@@ -556,6 +584,7 @@
         <a class="pnav" href="projects.html">Projects</a>
         <a class="pnav" href="https://story.artistso.com/">Story &amp; writing</a>
         <a class="pnav" href="https://ledger.artistso.com/">Analytical Ledger</a>
+        <a class="pnav" href="https://principalia.artistso.com/">Principalia</a>
         <a class="pnav" href="artwork.html">Artwork</a>
         <a class="pnav" href="pie.html">It&#x27;s a Pi-E Life</a>
         <a class="pnav" href="letter.html">The Letter</a>
@@ -573,12 +602,13 @@
         <a class="pnav" href="docs.html">Docs</a>
         <a class="pnav" href="notebooks.html">NotebookLM</a>
         <a class="pnav" href="reviews.html">Movie reviews</a>
+        <a class="pnav" href="muse-meta.html">Muse &amp; Meta</a>
         <a class="pnav" href="wiki.html">Wiki</a>
         <a class="pnav" href="forum.html" aria-current="page">Forum</a>
       </div>
     </nav>
     <div class="crumbs"><a href="https://artistso.com/">Home</a><span class="sep">&gt;</span>Forum</div>
-    <main>
+    <main id="main-content">
 
       <section>
         <div class="sec-head"><h2>Forum</h2><span class="tag">lot 19 · discussion · upvote / downvote · 250 characters</span></div>

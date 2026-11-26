@@ -4,9 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <link rel="icon" href="data:," />
-    <title>Apps &amp; code — artistso.com · Steven Owens</title>
-    <meta name="description" content="artistso.com: I'm Steven Owens — artist, animator, educator, developer. My apps, my theoretical physics and mathematics, a wave language, my long-form writing on Substack, and open commissions." />
+    <title>Apps &amp; code — apps.artistso.com · Steven Owens</title>
+    <meta name="description" content="apps.artistso.com — the pen-first Android apps: InkMind, Pluart, and the SoCreate line. On-device, no backend, no API keys, and the build status stated plainly." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -510,16 +509,38 @@
       .crumbs { background:var(--chip); border-left:6px solid var(--accent); border-radius:0; padding:12px 16px; margin-top:14px; }
       .crumbs .sep { font-size:0; } .crumbs .sep::after { content:"/"; font-size:13px; color:var(--accent); font-weight:700; }
     </style>
-  <style id="nav-organic-circuit">
-/* Organic nav upgrade 2026-11-25: apps — circuit. CSS only; links and breadcrumbs unchanged. */
-.pagenav{padding-bottom:15px;}
-.pagenav::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:14px;background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='120'%20height='16'%20viewBox='0%200%20120%2016'%3E%3Cpath%20d='M0%208%20H34%20L46%203%20H78%20L90%2012%20H120'%20fill='none'%20stroke='%2315803d'%20stroke-width='1.5'/%3E%3Ccircle%20cx='34'%20cy='8'%20r='2.4'%20fill='%2315803d'/%3E%3Ccircle%20cx='78'%20cy='3'%20r='2.4'%20fill='%230f766e'/%3E%3Ccircle%20cx='90'%20cy='12'%20r='2.4'%20fill='%2315803d'/%3E%3C/svg%3E") repeat-x left center;background-size:120px 14px;pointer-events:none;}
-.pagenav{position:sticky;}
-.pnav{border-radius:3px 10px 3px 10px;transition:background .18s ease,color .18s ease;}
-.crumbs .sep{color:var(--accent);font-weight:700;}
-</style>
-</head>
+    <!-- build:head — written by tools/build_site.py; do not hand-edit -->
+    <style id="nav-organic-circuit">
+    /* Organic nav upgrade 2026-11-26: apps — circuit. CSS only; links and breadcrumbs unchanged. */
+    .pagenav{padding-bottom:15px;}
+    .pagenav::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:14px;background:url("%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='120'%20height='16'%20viewBox='0%200%20120%2016'%3E%3Cpath%20d='M0%204%20H28%20V12%20H64%20V4%20H92%20V12%20H120'%20fill='none'%20stroke='%2316a34a'%20stroke-width='1.6'/%3E%3Ccircle%20cx='28'%20cy='4'%20r='2.1'%20fill='%2316a34a'/%3E%3Ccircle%20cx='64'%20cy='12'%20r='2.1'%20fill='%230c6b5e'/%3E%3Ccircle%20cx='92'%20cy='4'%20r='2.1'%20fill='%2316a34a'/%3E%3C/svg%3E") repeat-x left center;background-size:120px 14px;pointer-events:none;}
+    .pagenav{position:sticky;}
+    .pnav{border-radius:3px 10px 3px 10px;transition:background .18s ease,color .18s ease;}
+    .crumbs .sep{color:var(--accent);font-weight:700;}
+    </style>
+    <style id="chrome-a11y">
+    /* Skip link + focus ring. Written by tools/build_site.py — do not hand-edit. */
+    .skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--accent);color:#fff;padding:10px 16px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;border-radius:0 0 6px 0;text-decoration:none;}
+    .skip:focus{left:0;}
+    a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+    </style>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23db2777'/%3E%3Ccircle%20cx='28'%20cy='32'%20r='13'%20fill='none'%20stroke='%23fff'%20stroke-width='6'/%3E%3Ccircle%20cx='48'%20cy='42'%20r='5'%20fill='%23fff'/%3E%3C/svg%3E" />
+    <link rel="canonical" href="https://apps.artistso.com/" />
+    <meta name="theme-color" content="#f2faf3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1610" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="artistso.com" />
+    <meta property="og:title" content="Apps &amp; code — apps.artistso.com · Steven Owens" />
+    <meta property="og:description" content="apps.artistso.com — the pen-first Android apps: InkMind, Pluart, and the SoCreate line. On-device, no backend, no API keys, and the build status stated plainly." />
+    <meta property="og:url" content="https://apps.artistso.com/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Apps &amp; code — apps.artistso.com · Steven Owens" />
+    <meta name="twitter:description" content="apps.artistso.com — the pen-first Android apps: InkMind, Pluart, and the SoCreate line. On-device, no backend, no API keys, and the build status stated plainly." />
+    <!-- /build:head -->
+  </head>
   <body>
+    <a class="skip" href="#main-content">Skip to content</a>
     <header class="hero">
       <canvas id="field" aria-hidden="true"></canvas>
       <div class="hero-inner">
@@ -569,6 +590,7 @@
         <a class="pnav" href="https://artistso.com/projects.html">Projects</a>
         <a class="pnav" href="https://story.artistso.com/">Story &amp; writing</a>
         <a class="pnav" href="https://ledger.artistso.com/">Analytical Ledger</a>
+        <a class="pnav" href="https://principalia.artistso.com/">Principalia</a>
         <a class="pnav" href="https://artistso.com/artwork.html">Artwork</a>
         <a class="pnav" href="https://artistso.com/pie.html">It&#x27;s a Pi-E Life</a>
         <a class="pnav" href="https://artistso.com/letter.html">The Letter</a>
@@ -586,12 +608,13 @@
         <a class="pnav" href="https://artistso.com/docs.html">Docs</a>
         <a class="pnav" href="https://artistso.com/notebooks.html">NotebookLM</a>
         <a class="pnav" href="https://artistso.com/reviews.html">Movie reviews</a>
+        <a class="pnav" href="https://artistso.com/muse-meta.html">Muse &amp; Meta</a>
         <a class="pnav" href="https://artistso.com/wiki.html">Wiki</a>
         <a class="pnav" href="https://artistso.com/forum.html">Forum</a>
       </div>
     </nav>
     <div class="crumbs"><a href="https://artistso.com/">Home</a><span class="sep">&gt;</span>Apps &amp; code</div>
-    <main>
+    <main id="main-content">
 
       <section id="software">
         <div class="sec-head">
