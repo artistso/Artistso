@@ -518,6 +518,17 @@
     .skip:focus{left:0;}
     a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
     @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+    
+    /* One-row nav. Thirty links wrapped into a sticky bar four rows deep on a
+       phone; keep it to a single row that scrolls sideways instead, with a soft
+       fade at the right edge to show there is more. All links stay in the DOM and
+       in tab order — nothing is hidden from the keyboard or from a crawler. */
+    .pagenav-inner{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
+    .pagenav-inner::-webkit-scrollbar{display:none;}
+    .pagenav-inner .pnav{flex:0 0 auto;}
+    .pagenav-inner{-webkit-mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 28px),transparent 100%);}
+    .pagenav-inner:focus-within{-webkit-mask-image:none;mask-image:none;}
+    @media (min-width:1400px){.pagenav-inner{-webkit-mask-image:none;mask-image:none;}}
     </style>
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23db2777'/%3E%3Ccircle%20cx='28'%20cy='32'%20r='13'%20fill='none'%20stroke='%23fff'%20stroke-width='6'/%3E%3Ccircle%20cx='48'%20cy='42'%20r='5'%20fill='%23fff'/%3E%3C/svg%3E" />
     <link rel="canonical" href="https://artistso.com/xpage.html" />
@@ -583,6 +594,8 @@
         <a class="pnav" href="https://apps.artistso.com/">Apps &amp; code</a>
         <a class="pnav" href="projects.html">Projects</a>
         <a class="pnav" href="https://story.artistso.com/">Story &amp; writing</a>
+        <a class="pnav" href="career.html">Career &amp; trades</a>
+        <a class="pnav" href="bench.html">The bench</a>
         <a class="pnav" href="https://ledger.artistso.com/">Analytical Ledger</a>
         <a class="pnav" href="https://principalia.artistso.com/">Principalia</a>
         <a class="pnav" href="artwork.html">Artwork</a>
@@ -603,6 +616,7 @@
         <a class="pnav" href="notebooks.html">NotebookLM</a>
         <a class="pnav" href="reviews.html">Movie reviews</a>
         <a class="pnav" href="muse-meta.html">Muse &amp; Meta</a>
+        <a class="pnav" href="partners.html">Working papers</a>
         <a class="pnav" href="wiki.html">Wiki</a>
         <a class="pnav" href="forum.html">Forum</a>
       </div>

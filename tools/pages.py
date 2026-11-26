@@ -27,6 +27,8 @@ NAV = [
     ("Apps & code", "https://apps.artistso.com/"),
     ("Projects", "/projects.html"),
     ("Story & writing", "https://story.artistso.com/"),
+    ("Career & trades", "/career.html"),
+    ("The bench", "/bench.html"),
     ("Analytical Ledger", "https://ledger.artistso.com/"),
     ("Principalia", "https://principalia.artistso.com/"),
     ("Artwork", "/artwork.html"),
@@ -47,6 +49,7 @@ NAV = [
     ("NotebookLM", "/notebooks.html"),
     ("Movie reviews", "/reviews.html"),
     ("Muse & Meta", "/muse-meta.html"),
+    ("Working papers", "/partners.html"),
     ("Wiki", "/wiki.html"),
     ("Forum", "/forum.html"),
 ]
@@ -58,6 +61,8 @@ SECTIONS = {
     "apps": "https://apps.artistso.com/",
     "projects": "/projects.html",
     "story": "https://story.artistso.com/",
+    "careers": "/career.html",
+    "bench": "/bench.html",
     "ledger": "https://ledger.artistso.com/",
     "principalia": "https://principalia.artistso.com/",
     "artwork": "/artwork.html",
@@ -71,6 +76,7 @@ SECTIONS = {
     "library": "/docs.html",
     "reviews": "/reviews.html",
     "meta": "/muse-meta.html",
+    "partners": "/partners.html",
     "reference": "/wiki.html",
     "forum": "/forum.html",
 }
@@ -101,6 +107,10 @@ PAGES = {
         desc="apps.artistso.com — the pen-first Android apps: InkMind, Pluart, and the SoCreate line. On-device, no backend, no API keys, and the build status stated plainly.",
     ),
     # ------------------------------------------------------------ projects --
+    "bench.html": dict(
+        section="bench", motif="bench", theme="pink",
+        desc="The bench: seventeen apps written down with the honest state of each one — what is built, what is typed, and what is still only a specification.",
+    ),
     "projects.html": dict(
         section="projects", motif="map", theme="pink",
         desc="The full project index — socreate, quadrature-time, and the drawing, research, and games families, across several generations of each idea.",
@@ -125,6 +135,10 @@ PAGES = {
     "journey.html": dict(
         section="story", motif="ribbon", theme="purple",
         desc="My journey to Washington, year by year — his account, from Snohomish County in 1983 through Hanford, Las Vegas, Aberdeen, and Hoquiam.",
+    ),
+    "career.html": dict(
+        section="careers", motif="record", theme="pink",
+        desc="The record before the record: twenty-two years of casino floor leadership, PR and crisis communications, art and animation, and the trades — labelled by provenance.",
     ),
     "statement.html": dict(
         section="story", motif="ribbon", theme="purple",
@@ -236,6 +250,10 @@ PAGES = {
         desc="My reviews of Muse and Meta — the current review and the constant reviews, for the usage of what we're consistently doing.",
     ),
     # ----------------------------------------------------------- reference --
+    "partners.html": dict(
+        section="partners", motif="note2", theme="pink",
+        desc="The working papers between Atlas and Arena — what each did and why, what is still owed, and the decisions waiting on Steven.",
+    ),
     "wiki.html": dict(
         section="reference", motif="index", theme="pink",
         desc="The shared reference for my whole body of work — the ALUMELA lexicon of all 206 forms, zero-rings, the apps, and the build records.",

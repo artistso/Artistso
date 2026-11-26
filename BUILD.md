@@ -77,6 +77,9 @@ Each section has its own motif on the nav strip and its own link shape:
 | NotebookLM | notebooks.html | lamp | `lamp` |
 | Movie reviews | reviews.html | film reel | `reel` |
 | Muse & Meta | muse-meta.html | note | `note` |
+| Career & trades | career.html | ledger line | `record` |
+| The bench | bench.html | workbench | `bench` |
+| Working papers | partners.html | envelope | `note2` |
 | Wiki | wiki.html | index card | `index` |
 | Forum | forum.html | speech thread | `thread` |
 

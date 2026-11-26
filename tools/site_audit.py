@@ -58,6 +58,7 @@ MOTIFS = {
     "vine", "wave", "circuit", "ribbon", "contour", "survey", "mile",
     "map", "gallery", "chapter", "seal", "shelf", "gather", "gate",
     "cycle", "fork", "stack", "lamp", "reel", "note", "index", "thread",
+    "record", "bench", "note2",
 }
 
 # Subdomain folders: pages served from <sub>.artistso.com/
@@ -338,7 +339,7 @@ def audit():
             err("missing .crumbs")
 
         if not special:
-            motif = page.first(r'<style id="nav-organic-([a-z-]+)">')
+            motif = page.first(r'<style id="nav-organic-([a-z0-9-]+)">')
             if not motif:
                 err("missing organic nav style block (#nav-organic-KEY)")
             elif motif not in MOTIFS:

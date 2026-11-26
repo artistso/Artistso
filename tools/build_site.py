@@ -150,6 +150,30 @@ MOTIFS = {
         f"<path d='M0 14 H120' stroke='{C['pink2']}' stroke-width='1.2' opacity='.5'/>"
     ), "14px 14px 2px 2px", "gsite"),
 
+    # --------------------------------------------------------------- record
+    "record": (_svg(
+        f"<path d='M0 14 H120' stroke='{C['pink']}' stroke-width='1.4'/>"
+        f"<path d='M12 14 V5 M34 14 V7 M56 14 V4 M78 14 V7 M100 14 V5' stroke='{C['pink2']}' stroke-width='1.3'/>"
+        f"<path d='M12 5 H34 M34 7 H56 M56 4 H78 M78 7 H100 M100 5 H112' stroke='{C['pink2']}' stroke-width='1' opacity='.5'/>"
+        f"<circle cx='112' cy='5' r='2' fill='{C['pink']}'/>"
+    ), "2px 2px 2px 12px", "careers"),
+
+    "bench": (_svg(
+        f"<path d='M0 13 H120' stroke='{C['pink']}' stroke-width='1.4'/>"
+        f"<rect x='10' y='5' width='14' height='8' rx='1.2' fill='none' stroke='{C['pink2']}' stroke-width='1.3'/>"
+        f"<rect x='32' y='7' width='12' height='6' rx='1.2' fill='none' stroke='{C['pink2']}' stroke-width='1.3'/>"
+        f"<path d='M56 9 H70' stroke='{C['pink']}' stroke-width='1.4' stroke-dasharray='3 3'/>"
+        f"<rect x='74' y='4' width='16' height='9' rx='1.2' fill='none' stroke='{C['pink']}' stroke-width='1.3'/>"
+        f"<circle cx='104' cy='9' r='2.4' fill='{C['pink2']}'/>"
+    ), "3px 3px 10px 3px", "bench"),
+
+    "note2": (_svg(
+        f"<path d='M10 4 H52 V11 H10 Z' fill='none' stroke='{C['pink']}' stroke-width='1.3'/>"
+        f"<path d='M10 4 L31 10 L52 4' fill='none' stroke='{C['pink2']}' stroke-width='1.2'/>"
+        f"<path d='M62 8 H96' stroke='{C['pink2']}' stroke-width='1.1' stroke-dasharray='3 4'/>"
+        f"<circle cx='106' cy='8' r='2.4' fill='{C['pink']}'/>"
+    ), "2px 12px 2px 12px", "partners"),
+
     # ------------------------------------------------------------ utilities
     "cycle": (_svg(
         f"<path d='M6 13 H114' stroke='{C['pink2']}' stroke-width='1' stroke-dasharray='2 3'/>"
@@ -235,6 +259,17 @@ CHROME_CSS = """<style id="chrome-a11y">
 .skip:focus{left:0;}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+
+/* One-row nav. Thirty links wrapped into a sticky bar four rows deep on a
+   phone; keep it to a single row that scrolls sideways instead, with a soft
+   fade at the right edge to show there is more. All links stay in the DOM and
+   in tab order — nothing is hidden from the keyboard or from a crawler. */
+.pagenav-inner{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
+.pagenav-inner::-webkit-scrollbar{display:none;}
+.pagenav-inner .pnav{flex:0 0 auto;}
+.pagenav-inner{-webkit-mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 28px),transparent 100%);}
+.pagenav-inner:focus-within{-webkit-mask-image:none;mask-image:none;}
+@media (min-width:1400px){.pagenav-inner{-webkit-mask-image:none;mask-image:none;}}
 </style>"""
 
 # ---------------------------------------------------------------------------
