@@ -98,6 +98,32 @@ prose, and the deploy-mapping decision when Steven gives it.*
 
 ---
 
+## The issue queue
+
+Everything open is filed as a GitHub issue, so Atlas has a work queue rather
+than a conversation to re-read. **Start at [#11 — the queue](https://github.com/artistso/Artistso/issues/11)**, which indexes the rest.
+
+| # | Issue | Kind |
+|---|---|---|
+| [#2](https://github.com/artistso/Artistso/issues/2) | Main-domain / subdomain mapping — five byte-identical twins | needs a decision |
+| [#3](https://github.com/artistso/Artistso/issues/3) | `training-styles.jpg` never existed — chart stands in | confirm or replace |
+| [#4](https://github.com/artistso/Artistso/issues/4) | Muse letter 2 — publish or not, and where | needs a decision |
+| [#5](https://github.com/artistso/Artistso/issues/5) | Drive: the Nov 7 review Docs are stale | needs a decision |
+| [#6](https://github.com/artistso/Artistso/issues/6) | `laws.html` — public page naming alleged offences | needs a decision |
+| [#7](https://github.com/artistso/Artistso/issues/7) | Nav: 30 links is too many — two-tier proposal | task, own PR |
+| [#8](https://github.com/artistso/Artistso/issues/8) | Review the new pages' prose; homes for the faith material and Vroom | task |
+| [#9](https://github.com/artistso/Artistso/issues/9) | Write the deploy runbook | task |
+| [#10](https://github.com/artistso/Artistso/issues/10) | Home page: three different page counts, no lot numbers | needs a decision |
+
+Labels in use: `needs-decision` (waiting on Steven), `atlas` (for Atlas),
+`content`, `deploy`, `drive`.
+
+**Rule:** a decision is not an edit. If an issue is labelled `needs-decision`,
+the code change is usually small and the *choice* is the hard part — get the
+choice, then make the change.
+
+---
+
 ## The open decisions
 
 1. **Subdomain mapping** — see above. Blocks making the tree honest.
