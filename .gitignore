@@ -1,0 +1,7 @@
+# Python bytecode from the site tools
+__pycache__/
+*.py[cod]
+
+# OS noise
+.DS_Store
+Thumbs.db

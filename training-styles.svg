@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" role="img" aria-labelledby="t d">
+  <title id="t">Extremeness of the styles, 1 to 10</title>
+  <desc id="d">Horizontal bar chart of the nine martial arts named on the Training page, rated 1 to 10 for extremeness. Catch wrestling and Muay Thai rate 9, Judo 7, Greco-Roman, freestyle, Jiu-Jitsu 6, Taekwondo and Kung Fu 5, Aikido 3.</desc>
+  <style>
+    .bg   { fill: #fffbfd; }
+    .frame{ fill: none; stroke: #e8ccd6; stroke-width: 1; }
+    .lab  { fill: #241118; font-family: Spectral, Georgia, serif; font-size: 14px; }
+    .num  { fill: #6d4a58; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; }
+    .cap  { fill: #6d4a58; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .08em; }
+    .ttl  { fill: #241118; font-family: Spectral, Georgia, serif; font-size: 18px; font-weight: 600; }
+    .bar  { fill: #db2777; }
+    .track{ fill: #fdeef3; }
+    .tick { stroke: #e8ccd6; stroke-width: 1; }
+  </style>
+
+  <rect class="bg" width="640" height="330"/>
+  <rect class="frame" x="0.5" y="0.5" width="639" height="329"/>
+
+  <text class="ttl" x="24" y="30">Extremeness of the styles</text>
+  <text class="cap" x="24" y="49">1–10 · driven by what the rules allow</text>
+
+  <!-- grid: 1..10 across a 400px track starting at x=196 -->
+  <g>
+    <line class="tick" x1="196" y1="66" x2="196" y2="286"/>
+    <line class="tick" x1="236" y1="66" x2="236" y2="286"/>
+    <line class="tick" x1="276" y1="66" x2="276" y2="286"/>
+    <line class="tick" x1="316" y1="66" x2="316" y2="286"/>
+    <line class="tick" x1="356" y1="66" x2="356" y2="286"/>
+    <line class="tick" x1="396" y1="66" x2="396" y2="286"/>
+    <line class="tick" x1="436" y1="66" x2="436" y2="286"/>
+    <line class="tick" x1="476" y1="66" x2="476" y2="286"/>
+    <line class="tick" x1="516" y1="66" x2="516" y2="286"/>
+    <line class="tick" x1="556" y1="66" x2="556" y2="286"/>
+    <line class="tick" x1="596" y1="66" x2="596" y2="286"/>
+  </g>
+  <text class="num" x="196" y="304" text-anchor="middle">0</text>
+  <text class="num" x="396" y="304" text-anchor="middle">5</text>
+  <text class="num" x="596" y="304" text-anchor="middle">10</text>
+
+  <!-- rows: 9 styles, 24px pitch, bars scale 40px per point (track 196→596) -->
+  <g class="lab">
+    <rect class="track" x="196" y="70" width="400" height="14" rx="3"/>
+    <rect class="bar" x="196" y="70" width="360" height="14" rx="3"/>
+    <text x="24" y="81">Catch wrestling</text><text class="num" x="612" y="81">9</text>
+    <rect class="track" x="196" y="94" width="400" height="14" rx="3"/>
+    <rect class="bar" x="196" y="94" width="360" height="14" rx="3"/>
+    <text x="24" y="105">Muay Thai</text><text class="num" x="612" y="105">9</text>
+    <rect class="track" x="196" y="118" width="400" height="14" rx="3"/>
+    <rect class="bar" x="196" y="118" width="280" height="14" rx="3"/>
+    <text x="24" y="129">Judo</text><text class="num" x="612" y="129">7</text>
+    <rect class="track" x="196" y="142" width="400" height="14" rx="3"/>
+    <rect class="bar" x="196" y="142" width="240" height="14" rx="3"/>
+    <text x="24" y="153">Greco-Roman wrestling</text><text class="num" x="612" y="153">6</text>
+    <rect class="track" x="196" y="166" width="400" height="14" rx="3"/>
+    <rect class="bar" x="196" y="166" width="240" height="14" rx="3"/>
+    <text x="24" y="177">Freestyle wrestling</text><text class="num" x="612" y="177">6</text>
+    <rect class="track" x="196" y="190" width="400" height="14" rx="3"/>
+    <rect class="bar" x="196" y="190" width="240" height="14" rx="3"/>
+    <text x="24" y="201">Jiu-Jitsu</text><text class="num" x="612" y="201">6</text>
+    <rect class="track" x="196" y="214" width="400" height="14" rx="3"/>
+    <rect class="bar" x="196" y="214" width="200" height="14" rx="3"/>
+    <text x="24" y="225">Taekwondo</text><text class="num" x="612" y="225">5</text>
+    <rect class="track" x="196" y="238" width="400" height="14" rx="3"/>
+    <rect class="bar" x="196" y="238" width="200" height="14" rx="3"/>
+    <text x="24" y="249">Kung Fu</text><text class="num" x="612" y="249">5</text>
+    <rect class="track" x="196" y="262" width="400" height="14" rx="3"/>
+    <rect class="bar" x="196" y="262" width="120" height="14" rx="3"/>
+    <text x="24" y="273">Aikido</text><text class="num" x="612" y="273">3</text>
+  </g>
+
+  <text class="cap" x="24" y="318">ratings and histories: Atlas’s reference notes, not Steven’s words</text>
+</svg>

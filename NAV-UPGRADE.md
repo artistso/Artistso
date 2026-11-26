@@ -1,3 +1,10 @@
+> **Update, 2026-11-26.** The nav chrome is now generated, not hand-pasted.
+> `tools/build_site.py` writes one `#nav-organic-KEY` block into every page from
+> the motif table in that script, and `tools/pages.py` records which motif each
+> page uses. All 39 pages now carry a motif — the main sections keep the ones
+> specced below, and every other page has its own. See [BUILD.md](BUILD.md).
+> The original spec below is kept as the record of the first pass.
+
 # Organic nav upgrade — spec (2026-11-25)
 
 Steven's brief: upgrade the toolbar/navigation — organic, fresh, original

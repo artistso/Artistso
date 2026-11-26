@@ -1,0 +1,5 @@
+# artistso.com — crawlers welcome.
+User-agent: *
+Allow: /
+
+Sitemap: https://artistso.com/sitemap.xml
