@@ -511,7 +511,15 @@
       .crumbs a { color:#fff; text-decoration:underline; text-underline-offset:3px; }
       .crumbs .sep { font-size:0; } .crumbs .sep::after { content:"\2022"; font-size:13px; color:#fff; }
     </style>
-  </head>
+  <style id="nav-organic-contour">
+/* Organic nav upgrade 2026-11-25: work — contour. CSS only; links and breadcrumbs unchanged. */
+.pagenav{padding-bottom:15px;}
+.pagenav::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:14px;background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='120'%20height='16'%20viewBox='0%200%20120%2016'%3E%3Cpath%20d='M0%2012%20C%2020%203,%2038%203,%2058%2010%20C%2078%2016,%2096%205,%20120%208'%20fill='none'%20stroke='%23ea580c'%20stroke-width='1.6'/%3E%3Cpath%20d='M0%2015%20C%2024%208,%2044%208,%2064%2013%20C%2084%2017,%20100%2010,%20120%2012'%20fill='none'%20stroke='%23b91c1c'%20stroke-width='1'%20opacity='.5'/%3E%3C/svg%3E") repeat-x left center;background-size:120px 14px;pointer-events:none;}
+.pagenav{position:sticky;}
+.pnav{border-radius:12px 12px 3px 3px;transition:background .18s ease,color .18s ease;}
+.crumbs .sep{color:var(--accent);font-weight:700;}
+</style>
+</head>
   <body>
     <header class="hero">
       <canvas id="field" aria-hidden="true"></canvas>
